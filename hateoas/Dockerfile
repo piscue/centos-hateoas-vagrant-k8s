@@ -15,6 +15,6 @@ RUN yum -y install which
 RUN cd spring-boot/spring-boot-samples/spring-boot-sample-hateoas && \
     /usr/local/apache-maven/bin/mvn package
 WORKDIR /spring-boot/spring-boot-samples/spring-boot-sample-hateoas
-EXPOSE 9000:8080
+EXPOSE 8080
 CMD ["java", "-jar", "target/spring-boot-sample-hateoas-2.0.1.BUILD-SNAPSHOT.jar"]
 #CMD ["bash"]
