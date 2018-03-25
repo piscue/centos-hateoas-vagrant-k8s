@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER victor sanahuja piscue@gmail.com
+MAINTAINER Victor Sanahuja piscue@gmail.com
 RUN yum -y update >/dev/null 2>&1 \
     && yum -y install git java-1.8.0-openjdk java-1.8.0-openjdk-devel wget >/dev/null 2>&1
 RUN wget -nv \
@@ -17,4 +17,3 @@ RUN cd spring-boot/spring-boot-samples/spring-boot-sample-hateoas && \
 WORKDIR /spring-boot/spring-boot-samples/spring-boot-sample-hateoas
 EXPOSE 8080
 CMD ["java", "-jar", "target/spring-boot-sample-hateoas-2.0.1.BUILD-SNAPSHOT.jar"]
-#CMD ["bash"]
