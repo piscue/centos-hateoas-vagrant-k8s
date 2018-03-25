@@ -18,4 +18,3 @@ RUN apk update && apk add openssl && \
     mv server.pem /etc/ssl/private/example.com.pem
 EXPOSE 443
 CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
-#CMD ["sh"]

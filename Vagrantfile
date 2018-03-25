@@ -9,8 +9,8 @@ Vagrant.configure("2") do |config|
       v.cpus = 1
     end
     hateoas1.vm.provision "docker" do |d|
-      d.build_image "/vagrant/hateoas", args: "-t hateoas"
-      d.run "hateoas1", image: "hateoas", args: "-p 9000:8080"
+      #d.build_image "/vagrant/hateoas", args: "-t hateoas"
+      d.run "hateoas1", image: "piscue/hateoas-centos", args: "-p 9000:8080"
     end
   end
   config.vm.define("hateoas2") do |hateoas2|
@@ -21,8 +21,8 @@ Vagrant.configure("2") do |config|
       v.cpus = 1
     end
     hateoas2.vm.provision "docker" do |d|
-      d.build_image "/vagrant/hateoas", args: "-t hateoas"
-      d.run "hateoas2", image: "hateoas", args: "-p 9000:8080"
+      #d.build_image "/vagrant/hateoas", args: "-t hateoas"
+      d.run "hateoas2", image: "piscue/hateoas-centos", args: "-p 9000:8080"
     end
   end
   config.vm.define("haproxy") do |haproxy|
@@ -39,19 +39,22 @@ Vagrant.configure("2") do |config|
       yum -y install openssl haproxy >/dev/null 2>&1
       export CERT='/C=ES/ST=Barcelona/L=Barcelona/CN=test@example.com' && \
       openssl genrsa -out ca.key 4096 >/dev/null 2>&1 && \
-      openssl req -new -x509 -days 365 -key ca.key -out ca.crt -subj "$CERT" && \
+      openssl req -new -x509 -days 365 -key ca.key \
+      -out ca.crt -subj "$CERT" >/dev/null 2>&1 && \
       openssl genrsa -out server.key 1024 >/dev/null 2>&1 && \
-      openssl req -new -key server.key -out server.csr -subj "$CERT" && \
+      openssl req -new -key server.key \
+      -out server.csr -subj "$CERT" >/dev/null 2>&1 && \
       openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.key \
-      -set_serial 01 -out server.crt && \
+      -set_serial 01 -out server.crt >/dev/null 2>&1 && \
       openssl genrsa -out client.key 1024 >/dev/null 2>&1 && \
-      openssl req -new -key client.key -out client.csr -subj "$CERT" && \
+      openssl req -new -key client.key -out client.csr \
+      -subj "$CERT" >/dev/null 2>&1 && \
       openssl x509 -req -days 365 -in client.csr -CA ca.crt -CAkey ca.key \
-      -set_serial 02 -out client.crt && \
+      -set_serial 02 -out client.crt >/dev/null 2>&1 && \
       cat server.crt server.key > server.pem && \
       mkdir /etc/ssl/private/ && \
       mv server.pem /etc/ssl/private/example.com.pem
-      haproxy -f /usr/local/etc/haproxy/haproxy.cfg
+      haproxy -f /usr/local/etc/haproxy/haproxy.cfg >/dev/null 2>&1
     SHELL
   end
 end
