@@ -1,7 +1,7 @@
 # Hateoas Spring Boot example behind a load balancer
 
 This will create 3 VM running CentOS, two of them running the hateoas
-spring boot example, and one using HAProxy two balance load between the network
+spring boot example, and one using HAProxy to balance load between the instances
 
 To run this test is based on using Vagrant and Virtualbox
 
