@@ -1,5 +1,3 @@
-#ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
-
 Vagrant.configure("2") do |config|
   config.vm.define("hateoas1") do |hateoas1|
     hateoas1.vm.box = "centos/7"

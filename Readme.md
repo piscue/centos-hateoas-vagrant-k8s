@@ -11,10 +11,7 @@ just run:
 vagrant up
 ```
 
-This will create 3 VM running CentOS, two of them running the hateoas
-spring boot example, and one using HAProxy two balance load between the network
-
-two access to the Load Balancer just point the browser to:
+For accessing to the Load Balancer just point the browser to:
 
 https://192.168.15.20/customers
 
