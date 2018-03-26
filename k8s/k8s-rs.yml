@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: hateoas-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hateoas
+  template:
+    metadata:
+      labels:
+        app: hateoas
+    spec:
+      containers:
+      - name: hateoas
+        image: registry.hub.docker.com/piscue/hateoas-centos
+        ports:
+        - containerPort: 8080

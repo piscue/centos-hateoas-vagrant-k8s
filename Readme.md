@@ -3,7 +3,7 @@
 This will create 3 VM running CentOS, two of them running the hateoas
 spring boot example, and one using HAProxy two balance load between the network
 
-To run this test is setup using Vagrant and Virtualbox
+To run this test is based on using Vagrant and Virtualbox
 
 just run:
 
@@ -28,7 +28,7 @@ or
 
 http://192.168.15.22:9000/customers
 
-To shutdown this environment just running
+To shutdown this environment:
 
 ```
 vagrant destroy

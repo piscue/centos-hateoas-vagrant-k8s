@@ -1,6 +1,6 @@
 FROM haproxy:1.8.4-alpine
 MAINTAINER Victor Sanahuja piscue@gmail.com
-COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+COPY haproxy-k8s.cfg /usr/local/etc/haproxy/haproxy.cfg
 RUN adduser -D haproxy
 RUN apk update && apk add openssl && \
     export CERT='/C=ES/ST=Barcelona/L=Barcelona/CN=test@example.com' && \
@@ -18,3 +18,4 @@ RUN apk update && apk add openssl && \
     mv server.pem /etc/ssl/private/example.com.pem
 EXPOSE 443
 CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
+#CMD ["sh"]

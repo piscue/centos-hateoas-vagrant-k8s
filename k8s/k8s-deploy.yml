@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hateoas
+spec:
+  #selector:
+  #  app: hateoas
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hateoas
+    spec:
+      containers:
+      - name: hateoas
+        image: registry.hub.docker.com/piscue/hateoas-centos
+        ports:
+        - containerPort: 8080
+          protocol: TCP
